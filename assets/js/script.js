@@ -1,7 +1,9 @@
 const main = document.querySelector("main");
+const allBox = document.querySelectorAll(".box");
+const restBtn = document.querySelector("button");
 
-const playerOneMark = [];
-const playerTwoMark = [];
+let playerOneMark = [];
+let playerTwoMark = [];
 
 let playerTurn = 0;
 
@@ -26,6 +28,10 @@ const winningCombos = [
 
 main.addEventListener("click", (e) => {
   setPlayerMark(e.target);
+});
+
+restBtn.addEventListener("click", (e) => {
+  restartGame();
 });
 
 function setPlayerMark(cell) {
@@ -66,6 +72,13 @@ function checkWinner() {
 function playGame() {
   console.log("Game Started...");
   checkWinner();
+}
+
+function restartGame() {
+  playerTurn = 0;
+  playerOneMark = [];
+  playerTwoMark = [];
+  Array.from(allBox).forEach((box) => (box.innerText = ""));
 }
 
 playGame();
