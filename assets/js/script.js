@@ -115,6 +115,11 @@ function restartGame() {
   playerOneMark = [];
   playerTwoMark = [];
   Array.from(allBox).forEach((box) => (box.innerText = ""));
+  for (const rowKey in gameBoard) {
+    for (const colKey in gameBoard[rowKey]) {
+      gameBoard[rowKey][colKey] = "";
+    }
+  }
 }
 
 playGame();
