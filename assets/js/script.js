@@ -16,14 +16,46 @@ let gameBoard = {
 const marker = ["X", "O"];
 
 const winningCombos = [
-  [gameBoard.row1.col1, gameBoard.row1.col2, gameBoard.row1.col3],
-  [gameBoard.row2.col1, gameBoard.row2.col2, gameBoard.row2.col3],
-  [gameBoard.row3.col1, gameBoard.row3.col2, gameBoard.row3.col3],
-  [gameBoard.row1.col1, gameBoard.row2.col1, gameBoard.row3.col1],
-  [gameBoard.row1.col2, gameBoard.row2.col2, gameBoard.row3.col2],
-  [gameBoard.row1.col3, gameBoard.row2.col3, gameBoard.row3.col3],
-  [gameBoard.row1.col1, gameBoard.row2.col2, gameBoard.row3.col3],
-  [gameBoard.row1.col3, gameBoard.row2.col2, gameBoard.row3.col1],
+  [
+    ["row1", "col1"],
+    ["row1", "col2"],
+    ["row1", "col3"],
+  ],
+  [
+    ["row2", "col1"],
+    ["row2", "col2"],
+    ["row2", "col3"],
+  ],
+  [
+    ["row3", "col1"],
+    ["row3", "col2"],
+    ["row3", "col3"],
+  ],
+  [
+    ["row1", "col1"],
+    ["row2", "col1"],
+    ["row3", "col1"],
+  ],
+  [
+    ["row1", "col2"],
+    ["row2", "col2"],
+    ["row3", "col2"],
+  ],
+  [
+    ["row1", "col3"],
+    ["row2", "col3"],
+    ["row3", "col3"],
+  ],
+  [
+    ["row1", "col1"],
+    ["row2", "col2"],
+    ["row3", "col3"],
+  ],
+  [
+    ["row1", "col3"],
+    ["row2", "col2"],
+    ["row3", "col1"],
+  ],
 ];
 
 main.addEventListener("click", (e) => {
