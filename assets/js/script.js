@@ -36,13 +36,17 @@ restBtn.addEventListener("click", (e) => {
 
 function setPlayerMark(cell) {
   if (cell.innerText === "") {
+    const row = cell.dataset.row;
+    const col = cell.dataset.col;
     const currentMarker = marker[playerTurn];
     if (playerTurn === 0) {
       playerOneMark.push(currentMarker);
     } else {
       playerTwoMark.push(currentMarker);
     }
+    gameBoard[row][col] = currentMarker;
     cell.innerText = currentMarker;
+    checkWinner();
     playerTurn = 1 - playerTurn;
     return currentMarker;
   }
