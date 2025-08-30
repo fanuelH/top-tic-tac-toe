@@ -52,3 +52,10 @@ function checkWinner() {
     return `${marker[0]} | ${marker[1]} is Draw!`;
   }
 }
+
+function playGame() {
+  console.log("Game Started...");
+  checkWinner();
+}
+
+playGame();
