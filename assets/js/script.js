@@ -21,3 +21,14 @@ const winningCombos = [
   [gameBoard.row1.col1, gameBoard.row2.col2, gameBoard.row3.col3],
   [gameBoard.row1.col3, gameBoard.row2.col2, gameBoard.row3.col1],
 ];
+
+function setPlayerMark() {
+  const currentMarker = marker[playerTurn];
+  if (playerTurn === 0) {
+    playerOneMark.push(currentMarker);
+  } else {
+    PlayerTwoMark.push(currentMarker);
+  }
+  playerTurn = 1 - playerTurn;
+  return currentMarker;
+}
