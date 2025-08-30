@@ -29,15 +29,18 @@ main.addEventListener("click", (e) => {
 });
 
 function setPlayerMark(cell) {
-  const currentMarker = marker[playerTurn];
-  if (playerTurn === 0) {
-    playerOneMark.push(currentMarker);
-  } else {
-    PlayerTwoMark.push(currentMarker);
+  if (cell.innerText === "") {
+    const currentMarker = marker[playerTurn];
+    if (playerTurn === 0) {
+      playerOneMark.push(currentMarker);
+    } else {
+      PlayerTwoMark.push(currentMarker);
+    }
+    cell.innerText = currentMarker;
+    playerTurn = 1 - playerTurn;
+    return currentMarker;
   }
-  cell.innerText = currentMarker;
-  playerTurn = 1 - playerTurn;
-  return currentMarker;
+  return;
 }
 
 function checkWinner() {
