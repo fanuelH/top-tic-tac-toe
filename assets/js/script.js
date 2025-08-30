@@ -32,3 +32,23 @@ function setPlayerMark() {
   playerTurn = 1 - playerTurn;
   return currentMarker;
 }
+
+function checkWinner() {
+  // check for winner
+  for (const line of winningCombos) {
+    if (line[0] !== "" && line[0] === line[1] && line[1] === line[2]) {
+      console.log(`${line[0]} is Winner!`);
+      return line[0];
+    }
+  }
+
+  // check for draw
+  const allFilled = Object.values(gameBoard).every((row) => {
+    Object.values(row).every((cell) => cell !== "");
+  });
+
+  if (allFilled) {
+    console.log(`${marker[0]} | ${marker[1]} is Draw!`);
+    return `${marker[0]} | ${marker[1]} is Draw!`;
+  }
+}
