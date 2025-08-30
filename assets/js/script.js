@@ -1,7 +1,7 @@
 const main = document.querySelector("main");
 
 const playerOneMark = [];
-const PlayerTwoMark = [];
+const playerTwoMark = [];
 
 let playerTurn = 0;
 
@@ -34,7 +34,7 @@ function setPlayerMark(cell) {
     if (playerTurn === 0) {
       playerOneMark.push(currentMarker);
     } else {
-      PlayerTwoMark.push(currentMarker);
+      playerTwoMark.push(currentMarker);
     }
     cell.innerText = currentMarker;
     playerTurn = 1 - playerTurn;
