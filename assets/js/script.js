@@ -44,7 +44,7 @@ function checkWinner() {
 
   // check for draw
   const allFilled = Object.values(gameBoard).every((row) => {
-    Object.values(row).every((cell) => cell !== "");
+    return Object.values(row).every((cell) => cell !== "");
   });
 
   if (allFilled) {
