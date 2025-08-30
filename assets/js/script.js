@@ -1,3 +1,5 @@
+const main = document.querySelector("main");
+
 const playerOneMark = [];
 const PlayerTwoMark = [];
 
@@ -22,13 +24,18 @@ const winningCombos = [
   [gameBoard.row1.col3, gameBoard.row2.col2, gameBoard.row3.col1],
 ];
 
-function setPlayerMark() {
+main.addEventListener("click", (e) => {
+  setPlayerMark(e.target);
+});
+
+function setPlayerMark(cell) {
   const currentMarker = marker[playerTurn];
   if (playerTurn === 0) {
     playerOneMark.push(currentMarker);
   } else {
     PlayerTwoMark.push(currentMarker);
   }
+  cell.innerText = currentMarker;
   playerTurn = 1 - playerTurn;
   return currentMarker;
 }
