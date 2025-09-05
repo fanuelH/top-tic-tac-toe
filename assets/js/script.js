@@ -88,9 +88,10 @@ function setPlayerMark(cell) {
 function checkWinner() {
   // check for winner
   for (const line of winningCombos) {
-    if (line[0] !== "" && line[0] === line[1] && line[1] === line[2]) {
-      console.log(`${line[0]} is Winner!`);
-      return line[0];
+    const [a, b, c] = line.map(([r, c]) => gameBoard[r][c]);
+    if (a !== "" && a === b && b === c) {
+      console.log(`${a} is the Winner!`);
+      return a;
     }
   }
 
