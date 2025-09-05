@@ -1,6 +1,8 @@
 const main = document.querySelector("main");
 const allBox = document.querySelectorAll(".box");
 const restBtn = document.querySelector("button");
+const xWrapper = document.querySelector(".x-wrapper");
+const oWrapper = document.querySelector(".o-wrapper");
 
 let playerOneMark = [];
 let playerTwoMark = [];
@@ -71,17 +73,11 @@ function setPlayerMark(cell) {
     const row = cell.dataset.row;
     const col = cell.dataset.col;
     const currentMarker = marker[playerTurn];
-    if (playerTurn === 0) {
-      cell.classList.add("coloredX");
-      playerOneMark.push(currentMarker);
-    } else {
-      playerTwoMark.push(currentMarker);
-      cell.classList.add("coloredO");
-    }
     gameBoard[row][col] = currentMarker;
     cell.innerText = currentMarker;
     checkWinner();
     playerTurn = 1 - playerTurn;
+    colorHandler(cell);
     return currentMarker;
   }
   return;
@@ -109,7 +105,7 @@ function checkWinner() {
 }
 
 function playGame() {
-  console.log("Game Started...");
+  xWrapper.classList.add("coloredBottomBoarder");
   checkWinner();
 }
 
@@ -126,6 +122,18 @@ function restartGame() {
     for (const colKey in gameBoard[rowKey]) {
       gameBoard[rowKey][colKey] = "";
     }
+  }
+}
+
+function colorHandler(cell) {
+  if (playerTurn === 0) {
+    cell.classList.add("coloredX");
+    xWrapper.classList.add("coloredBottomBoarder");
+    oWrapper.classList.remove("coloredBottomBoarder");
+  } else {
+    cell.classList.add("coloredO");
+    oWrapper.classList.add("coloredBottomBoarder");
+    xWrapper.classList.remove("coloredBottomBoarder");
   }
 }
 
