@@ -103,9 +103,9 @@ button {
 }
 
 .coloredX {
-  color: #545454; /* X-color */
+  color: white; /* X-color */
 }
 
 .coloredO {
-  color: white; /* O-color */
+  color: #545454; /* O-color */
 }
