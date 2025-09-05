@@ -3,6 +3,8 @@ const allBox = document.querySelectorAll(".box");
 const restBtn = document.querySelector("button");
 const xWrapper = document.querySelector(".x-wrapper");
 const oWrapper = document.querySelector(".o-wrapper");
+const displayResult = document.querySelector("#result-modal");
+const gameResult = document.querySelector("#game-result");
 
 let gameStatus = false;
 let playerTurn = 0;
@@ -86,7 +88,8 @@ function checkWinner() {
   for (const line of winningCombos) {
     const [a, b, c] = line.map(([r, c]) => gameBoard[r][c]);
     if (a !== "" && a === b && b === c) {
-      console.log(`${a} is the Winner!`);
+      displayResult.show();
+      gameResult.innerText = `${a} is Winner`;
       gameStatus = true;
       return a;
     }
@@ -98,7 +101,9 @@ function checkWinner() {
   });
 
   if (allFilled) {
-    console.log(`${marker[0]} | ${marker[1]} is Draw!`);
+    gameResult.innerText = `${marker[0]} ${marker[1]} Draw!`;
+    displayResult.show();
+    gameStatus = true;
     return `${marker[0]} | ${marker[1]} is Draw!`;
   }
 }
@@ -111,6 +116,7 @@ function playGame() {
 function restartGame() {
   playerTurn = 0;
   gameStatus = false;
+  displayResult.close();
   xWrapper.classList.add("coloredBottomBoarder");
   oWrapper.classList.remove("coloredBottomBoarder");
   Array.from(allBox).forEach((box) => (box.innerText = ""));

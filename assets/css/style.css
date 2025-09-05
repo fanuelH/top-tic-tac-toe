@@ -78,8 +78,7 @@ header {
   border-right: 0.22em solid #0da192;
 }
 
-.box:hover,
-button:hover {
+.box:hover {
   background-color: rgba(207, 250, 246, 0.2);
 }
 
@@ -100,8 +99,12 @@ button {
   background-color: #1f1f1f;
   color: rgb(20, 189, 172);
   cursor: pointer;
+  z-index: 5;
 }
 
+button:hover {
+  color: white;
+}
 .coloredX {
   color: white; /* X-color */
 }
@@ -112,4 +115,24 @@ button {
 
 .p-name {
   color: rgb(20, 189, 172);
+}
+
+#result-modal {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 5em;
+  font-weight: bold;
+  color: white;
+  width: 304px;
+  height: 50%;
+  background-color: rgba(20, 189, 172, 0.8);
+  z-index: 3;
+  outline: none;
+  border: none;
+}
+
+#game-result {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
