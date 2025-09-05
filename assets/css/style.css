@@ -136,3 +136,35 @@ button:hover {
   align-items: center;
   height: 100%;
 }
+
+#player-name-modal {
+  display: flex;
+  padding-top: 1em;
+  gap: 10px;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(20, 189, 172, 0.8);
+  z-index: 6;
+}
+
+input {
+  padding: 0.7em;
+  border: none;
+  border-radius: 0.2em;
+  margin: 0.5em;
+  outline-color: #0da192;
+}
+
+label {
+  font-size: 1.5em;
+  color: white;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+  margin: 0 auto;
+}
