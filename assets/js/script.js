@@ -113,7 +113,8 @@ function restartGame() {
   playerTurn = 0;
   playerOneMark = [];
   playerTwoMark = [];
-
+  xWrapper.classList.add("coloredBottomBoarder");
+  oWrapper.classList.remove("coloredBottomBoarder");
   Array.from(allBox).forEach((box) => (box.innerText = ""));
   Array.from(allBox).forEach((box) =>
     box.classList.remove("coloredX", "coloredO")
