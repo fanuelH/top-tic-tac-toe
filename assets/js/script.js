@@ -72,9 +72,11 @@ function setPlayerMark(cell) {
     const col = cell.dataset.col;
     const currentMarker = marker[playerTurn];
     if (playerTurn === 0) {
+      cell.classList.add("coloredX");
       playerOneMark.push(currentMarker);
     } else {
       playerTwoMark.push(currentMarker);
+      cell.classList.add("coloredO");
     }
     gameBoard[row][col] = currentMarker;
     cell.innerText = currentMarker;
@@ -115,7 +117,11 @@ function restartGame() {
   playerTurn = 0;
   playerOneMark = [];
   playerTwoMark = [];
+
   Array.from(allBox).forEach((box) => (box.innerText = ""));
+  Array.from(allBox).forEach((box) =>
+    box.classList.remove("coloredX", "coloredO")
+  );
   for (const rowKey in gameBoard) {
     for (const colKey in gameBoard[rowKey]) {
       gameBoard[rowKey][colKey] = "";

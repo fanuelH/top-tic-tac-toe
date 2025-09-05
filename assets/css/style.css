@@ -61,21 +61,18 @@ header {
 
 .box5 {
   border: 0.22em solid #0da192;
-  color: white;
 }
 
 .box4,
 .box6 {
   border-bottom: 0.22em solid #0da192;
   border-top: 0.22em solid #0da192;
-  color: white; /* O-color */
 }
 
 .box2,
 .box8 {
   border-left: 0.22em solid #0da192;
   border-right: 0.22em solid #0da192;
-  color: #545454; /* X-color */
 }
 
 .box:hover,
@@ -100,4 +97,12 @@ button {
   background-color: #1f1f1f;
   color: rgb(20, 189, 172);
   cursor: pointer;
+}
+
+.coloredX {
+  color: #545454; /* X-color */
+}
+
+.coloredO {
+  color: white; /* O-color */
 }
