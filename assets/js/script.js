@@ -7,6 +7,7 @@ const oWrapper = document.querySelector(".o-wrapper");
 let playerOneMark = [];
 let playerTwoMark = [];
 
+let gameStatus = false;
 let playerTurn = 0;
 
 let gameBoard = {
@@ -69,7 +70,7 @@ restBtn.addEventListener("click", (e) => {
 });
 
 function setPlayerMark(cell) {
-  if (cell.innerText === "") {
+  if (cell.innerText === "" && gameStatus === false) {
     const row = cell.dataset.row;
     const col = cell.dataset.col;
     const currentMarker = marker[playerTurn];
@@ -89,6 +90,7 @@ function checkWinner() {
     const [a, b, c] = line.map(([r, c]) => gameBoard[r][c]);
     if (a !== "" && a === b && b === c) {
       console.log(`${a} is the Winner!`);
+      gameStatus = true;
       return a;
     }
   }
@@ -113,6 +115,7 @@ function restartGame() {
   playerTurn = 0;
   playerOneMark = [];
   playerTwoMark = [];
+  gameStatus = false;
   xWrapper.classList.add("coloredBottomBoarder");
   oWrapper.classList.remove("coloredBottomBoarder");
   Array.from(allBox).forEach((box) => (box.innerText = ""));
