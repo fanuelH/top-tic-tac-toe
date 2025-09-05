@@ -4,9 +4,6 @@ const restBtn = document.querySelector("button");
 const xWrapper = document.querySelector(".x-wrapper");
 const oWrapper = document.querySelector(".o-wrapper");
 
-let playerOneMark = [];
-let playerTwoMark = [];
-
 let gameStatus = false;
 let playerTurn = 0;
 
@@ -113,8 +110,6 @@ function playGame() {
 
 function restartGame() {
   playerTurn = 0;
-  playerOneMark = [];
-  playerTwoMark = [];
   gameStatus = false;
   xWrapper.classList.add("coloredBottomBoarder");
   oWrapper.classList.remove("coloredBottomBoarder");
