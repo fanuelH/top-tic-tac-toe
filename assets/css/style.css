@@ -109,3 +109,7 @@ button {
 .coloredO {
   color: #545454; /* O-color */
 }
+
+.p-name {
+  color: rgb(20, 189, 172);
+}
