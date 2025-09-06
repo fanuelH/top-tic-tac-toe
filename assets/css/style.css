@@ -138,13 +138,14 @@ button:hover {
 }
 
 #player-name-modal {
-  display: flex;
-  padding-top: 1em;
-  gap: 10px;
-  width: 100%;
-  height: 100vh;
+  margin: 1em auto;
+  padding: 1em;
   background-color: rgba(20, 189, 172, 0.8);
   z-index: 6;
+}
+
+#player-name-modal::backdrop {
+  background-color: rgba(20, 189, 172, 0.8);
 }
 
 input {
