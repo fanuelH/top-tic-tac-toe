@@ -1,6 +1,6 @@
 const main = document.querySelector("main");
 const allBox = document.querySelectorAll(".box");
-const restBtn = document.querySelector("button");
+const restBtn = document.querySelector("#restart-btn");
 const xWrapper = document.querySelector(".x-wrapper");
 const oWrapper = document.querySelector(".o-wrapper");
 const displayResult = document.querySelector("#result-modal");
@@ -133,9 +133,9 @@ function playGame() {
 }
 
 function restartGame() {
+  displayResult.close();
   playerTurn = 0;
   gameStatus = false;
-  displayResult.close();
   xWrapper.classList.add("coloredBottomBoarder");
   oWrapper.classList.remove("coloredBottomBoarder");
   Array.from(allBox).forEach((box) => (box.innerText = ""));
@@ -147,6 +147,7 @@ function restartGame() {
       gameBoard[rowKey][colKey] = "";
     }
   }
+  playGame();
 }
 
 function colorHandler(cell) {
