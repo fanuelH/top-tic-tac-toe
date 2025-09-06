@@ -9,6 +9,8 @@ const startBtn = document.querySelector("#start-game-btn");
 const initialModal = document.querySelector("#player-name-modal");
 const playerOneNameInput = document.querySelector("#player1");
 const playerTwoNameInput = document.querySelector("#player2");
+const playerOneName = document.querySelector(".player1-name");
+const playerTwoName = document.querySelector(".player2-name");
 
 let gameStatus = false;
 let playerTurn = 0;
@@ -67,6 +69,8 @@ const winningCombos = [
 startBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (playerOneNameInput.value !== "" && playerTwoNameInput.value !== "") {
+    playerOneName.innerText = `${playerOneNameInput.value}`.toLocaleUpperCase();
+    playerTwoName.innerText = `${playerTwoNameInput.value}`.toLocaleUpperCase();
     initialModal.close();
     playGame();
   } else {
