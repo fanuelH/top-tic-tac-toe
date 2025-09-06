@@ -5,6 +5,10 @@ const xWrapper = document.querySelector(".x-wrapper");
 const oWrapper = document.querySelector(".o-wrapper");
 const displayResult = document.querySelector("#result-modal");
 const gameResult = document.querySelector("#game-result");
+const startBtn = document.querySelector("#start-game-btn");
+const initialModal = document.querySelector("#player-name-modal");
+const playerOneName = document.querySelector("#player1");
+const playerTwoName = document.querySelector("#player2");
 
 let gameStatus = false;
 let playerTurn = 0;
@@ -59,6 +63,17 @@ const winningCombos = [
     ["row3", "col1"],
   ],
 ];
+
+startBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (playerOneName.value !== "" && playerTwoName.value !== "") {
+    initialModal.close();
+    playGame();
+  } else {
+    initialModal.showModal();
+    throw new Error("Player Name is Required!");
+  }
+});
 
 main.addEventListener("click", (e) => {
   setPlayerMark(e.target);
@@ -142,4 +157,4 @@ function colorHandler(cell) {
   }
 }
 
-playGame();
+initialModal.showModal();
