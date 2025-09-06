@@ -68,15 +68,14 @@ const winningCombos = [
 
 startBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  if (playerOneNameInput.value !== "" && playerTwoNameInput.value !== "") {
-    playerOneName.innerText = `${playerOneNameInput.value}`.toLocaleUpperCase();
-    playerTwoName.innerText = `${playerTwoNameInput.value}`.toLocaleUpperCase();
-    initialModal.close();
-    playGame();
-  } else {
-    initialModal.showModal();
-    throw new Error("Player Name is Required!");
+  if (!playerOneNameInput.value.trim() && !playerTwoNameInput.value.trim()) {
+    alert("Both Player names are required!");
+    return;
   }
+  playerOneName.innerText = `${playerOneNameInput.value}`.toLocaleUpperCase();
+  playerTwoName.innerText = `${playerTwoNameInput.value}`.toLocaleUpperCase();
+  initialModal.close();
+  playGame();
 });
 
 main.addEventListener("click", (e) => {
@@ -108,7 +107,7 @@ function checkWinner() {
     const [a, b, c] = line.map(([r, c]) => gameBoard[r][c]);
     if (a !== "" && a === b && b === c) {
       displayResult.show();
-      gameResult.innerText = `${a} is Winner`;
+      gameResult.innerText = `${a} wins! 🎉`;
       gameStatus = true;
       return a;
     }
@@ -120,10 +119,10 @@ function checkWinner() {
   });
 
   if (allFilled) {
-    gameResult.innerText = `${marker[0]} ${marker[1]} Draw!`;
+    gameResult.innerText = "It’s a draw!";
     displayResult.show();
     gameStatus = true;
-    return `${marker[0]} | ${marker[1]} is Draw!`;
+    return "It’s a draw!";
   }
 }
 
