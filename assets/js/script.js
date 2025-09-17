@@ -144,7 +144,6 @@ function checkWinner() {
 
 function playGame() {
   xWrapper.classList.add("coloredBottomBoarder");
-  checkWinner();
 }
 
 function restartGame() {
