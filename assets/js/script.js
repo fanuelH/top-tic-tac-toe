@@ -12,57 +12,84 @@ const playerTwoNameInput = document.querySelector("#player2");
 const playerOneName = document.querySelector(".player1-name");
 const playerTwoName = document.querySelector(".player2-name");
 
+const marker = ["X", "O"];
+
 let gameStatus = false;
 let playerTurn = 0;
 
-let gameBoard = {
-  row1: { col1: "", col2: "", col3: "" },
-  row2: { col1: "", col2: "", col3: "" },
-  row3: { col1: "", col2: "", col3: "" },
+// using IIFE(module)
+const gameBoard = (() => {
+  let board = [
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+  ];
+
+  const setMark = (row, col, mark) => {
+    board[row][col] = mark;
+  };
+
+  const getBoard = () => board;
+
+  return { setMark, getBoard };
+})();
+
+// using factory
+const Player = (name, marker) => {
+  return { name, marker };
 };
 
-const marker = ["X", "O"];
+const PlayerNameSetter = (() => {
+  const player1 = Player(playerOneNameInput.value, marker[0]);
+  const player2 = Player(playerTwoNameInput.value, marker[1]);
+
+  const setName = () => {
+    playerOneName.innerText = `${player1.name}`;
+    playerTwoName.innerText = `${player2.name}`;
+  };
+  return { setName };
+})();
 
 const winningCombos = [
   [
-    ["row1", "col1"],
-    ["row1", "col2"],
-    ["row1", "col3"],
+    [0, 0],
+    [0, 1],
+    [0, 2],
   ],
   [
-    ["row2", "col1"],
-    ["row2", "col2"],
-    ["row2", "col3"],
+    [1, 0],
+    [1, 1],
+    [1, 2],
   ],
   [
-    ["row3", "col1"],
-    ["row3", "col2"],
-    ["row3", "col3"],
+    [2, 0],
+    [2, 1],
+    [2, 2],
   ],
   [
-    ["row1", "col1"],
-    ["row2", "col1"],
-    ["row3", "col1"],
+    [0, 0],
+    [1, 0],
+    [2, 0],
   ],
   [
-    ["row1", "col2"],
-    ["row2", "col2"],
-    ["row3", "col2"],
+    [0, 1],
+    [1, 1],
+    [2, 1],
   ],
   [
-    ["row1", "col3"],
-    ["row2", "col3"],
-    ["row3", "col3"],
+    [0, 2],
+    [1, 2],
+    [2, 2],
   ],
   [
-    ["row1", "col1"],
-    ["row2", "col2"],
-    ["row3", "col3"],
+    [0, 0],
+    [1, 1],
+    [2, 2],
   ],
   [
-    ["row1", "col3"],
-    ["row2", "col2"],
-    ["row3", "col1"],
+    [0, 2],
+    [1, 1],
+    [2, 0],
   ],
 ];
 
@@ -72,8 +99,6 @@ startBtn.addEventListener("click", (e) => {
     alert("Both Player names are required!");
     return;
   }
-  playerOneName.innerText = `${playerOneNameInput.value}`.toLocaleUpperCase();
-  playerTwoName.innerText = `${playerTwoNameInput.value}`.toLocaleUpperCase();
   initialModal.close();
   playGame();
 });
@@ -91,7 +116,7 @@ function setPlayerMark(cell) {
     const row = cell.dataset.row;
     const col = cell.dataset.col;
     const currentMarker = marker[playerTurn];
-    gameBoard[row][col] = currentMarker;
+    gameBoard.setMark(row, col, currentMarker);
     cell.innerText = currentMarker;
     checkWinner();
     playerTurn = 1 - playerTurn;
@@ -104,7 +129,7 @@ function setPlayerMark(cell) {
 function checkWinner() {
   // check for winner
   for (const line of winningCombos) {
-    const [a, b, c] = line.map(([r, c]) => gameBoard[r][c]);
+    const [a, b, c] = line.map(([r, c]) => gameBoard.getBoard()[r][c]);
     if (a !== "" && a === b && b === c) {
       displayResult.show();
       gameResult.innerText = `${a} wins! 🎉`;
@@ -114,7 +139,7 @@ function checkWinner() {
   }
 
   // check for draw
-  const allFilled = Object.values(gameBoard).every((row) => {
+  const allFilled = Object.values(gameBoard.getBoard()).every((row) => {
     return Object.values(row).every((cell) => cell !== "");
   });
 
@@ -137,11 +162,11 @@ function restartGame() {
   gameStatus = false;
   xWrapper.classList.add("coloredBottomBoarder");
   oWrapper.classList.remove("coloredBottomBoarder");
-  Array.from(allBox).forEach((box) => (box.innerText = ""));
-  Array.from(allBox).forEach((box) =>
-    box.classList.remove("coloredX", "coloredO")
-  );
-  for (const rowKey in gameBoard) {
+  Array.from(allBox).forEach((box) => {
+    box.innerText = "";
+    box.classList.remove("coloredX", "coloredO");
+  });
+  for (const rowKey in gameBoard.getBoard()) {
     for (const colKey in gameBoard[rowKey]) {
       gameBoard[rowKey][colKey] = "";
     }
