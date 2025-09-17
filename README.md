@@ -29,6 +29,6 @@ A simple Tic-Tac-Toe game implemented with **HTML**, **CSS**, and **JavaScript**
 
 ## preview
 
-[name-dialog] ("/assets/images/name-dialog-page.png")
-[game-board-page] ("/assets/images/game-board-page.png")
-[winner-dialog] ("/assets/images/winner-page.png")
+![name-dialog]("/assets/images/name-dialog-page.png")
+![game-board-page]("/assets/images/game-board-page.png")
+![winner-dialog]("/assets/images/winner-page.png")
