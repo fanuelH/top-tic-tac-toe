@@ -104,9 +104,9 @@ restBtn.addEventListener("click", (e) => {
 });
 
 function setPlayerMark(cell) {
-  if (cell.innerText === "" && gameStatus === false) {
-    const row = Number(cell.dataset.row);
-    const col = Number(cell.dataset.col);
+  const row = Number(cell.dataset.row);
+  const col = Number(cell.dataset.col);
+  if (gameBoard.getBoard()[row][col] === "" && !gameStatus) {
     const currentMarker = marker[playerTurn];
     gameBoard.setMark(row, col, currentMarker);
     cell.innerText = currentMarker;
