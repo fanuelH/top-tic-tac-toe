@@ -39,17 +39,6 @@ const Player = (name, marker) => {
   return { name, marker };
 };
 
-const PlayerNameSetter = (() => {
-  const player1 = Player(playerOneNameInput.value, marker[0]);
-  const player2 = Player(playerTwoNameInput.value, marker[1]);
-
-  const setName = () => {
-    playerOneName.innerText = `${player1.name}`;
-    playerTwoName.innerText = `${player2.name}`;
-  };
-  return { setName };
-})();
-
 const winningCombos = [
   [
     [0, 0],
