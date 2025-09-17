@@ -141,9 +141,9 @@ function checkWinner() {
   }
 
   // check for draw
-  const allFilled = Object.values(gameBoard.getBoard()).every((row) => {
-    return Object.values(row).every((cell) => cell !== "");
-  });
+  const allFilled = gameBoard
+    .getBoard()
+    .every((row) => row.every((cell) => cell !== ""));
 
   if (allFilled) {
     gameResult.innerText = "It’s a draw!";
