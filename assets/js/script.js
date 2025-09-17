@@ -99,6 +99,8 @@ startBtn.addEventListener("click", (e) => {
     alert("Both Player names are required!");
     return;
   }
+  playerOneName.innerText = `${playerOneNameInput.value}`.toLocaleUpperCase();
+  playerTwoName.innerText = `${playerTwoNameInput.value}`.toLocaleUpperCase();
   initialModal.close();
   playGame();
 });
