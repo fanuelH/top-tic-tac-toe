@@ -30,8 +30,10 @@ const gameBoard = (() => {
   };
 
   const getBoard = () => board;
-
-  return { setMark, getBoard };
+  const rest = () => {
+    board.forEach((row) => row.fill(""));
+  };
+  return { setMark, getBoard, rest };
 })();
 
 // using factory
@@ -157,7 +159,7 @@ function restartGame() {
     box.innerText = "";
     box.classList.remove("coloredX", "coloredO");
   });
-  gameBoard.getBoard().forEach((row) => row.fill(""));
+  gameBoard.rest();
   playGame();
 }
 
