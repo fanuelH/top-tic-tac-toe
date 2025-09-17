@@ -86,7 +86,7 @@ const winningCombos = [
 
 startBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  if (!playerOneNameInput.value.trim() && !playerTwoNameInput.value.trim()) {
+  if (!playerOneNameInput.value.trim() || !playerTwoNameInput.value.trim()) {
     alert("Both Player names are required!");
     return;
   }
