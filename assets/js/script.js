@@ -168,11 +168,7 @@ function restartGame() {
     box.innerText = "";
     box.classList.remove("coloredX", "coloredO");
   });
-  for (const rowKey in gameBoard.getBoard()) {
-    for (const colKey in gameBoard[rowKey]) {
-      gameBoard[rowKey][colKey] = "";
-    }
-  }
+  gameBoard.getBoard().forEach((row) => row.fill(""));
   playGame();
 }
 
