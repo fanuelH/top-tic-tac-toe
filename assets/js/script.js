@@ -95,6 +95,7 @@ startBtn.addEventListener("click", (e) => {
 });
 
 main.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("box")) return;
   setPlayerMark(e.target);
 });
 
